@@ -54,17 +54,17 @@ export default function TextForm(props){
                 <label htmlFor="myBox" className="form-label"></label>
               <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="15" cols="50"></textarea>
             </div>
-            <button className="btn-btn-primary mx-2" onClick={handleUpClick}>Convert To Uppercase</button>
-            <button className="btn-btn-primary mx-2" onClick={handleLowClick}>Convert To Lowercase</button>
-               <button className="btn-btn-primary mx-2" onClick={handleClearClick}>Clear Text</button>
-        <button className="btn-btn-primary mx-2" onClick={handleCopy}>Copy Text</button>
- <button className="btn-btn-primary mx-2" onClick={handleExtraSpaces}>Remove extra Spaces</button>
+            <button disabled={text.length===0} className="btn-btn-primary mx-2 my-2" onClick={handleUpClick}>Convert To Uppercase</button>
+            <button disabled={text.length===0}className="btn-btn-primary mx-2 my-2" onClick={handleLowClick}>Convert To Lowercase</button>
+               <button disabled={text.length===0}className="btn-btn-primary mx-2 my-2" onClick={handleClearClick}>Clear Text</button>
+        <button disabled={text.length===0} className="btn-btn-primary mx-2 my-2" onClick={handleCopy}>Copy Text</button>
+ <button disabled={text.length===0}className="btn-btn-primary mx-2 my-2" onClick={handleExtraSpaces}>Remove extra Spaces</button>
    
         </div>
         <div className="container my-3">
             <h1>Your Sample Text Summary</h1>
-            <p>{text.split(" ").length} words and{text.length} characters</p>
-        <p>{0.008*text.split(" ").length}Minutes to read</p>
+            <p>{text.split(/\\s+/).filter((element)=>{return element.length!==0}).length} words and{text.length} characters</p>
+        <p>{0.008 * text.split(/\\s+/).filter((element)=>{return element.length!==0}).length}Minutes to read</p>
         <h2>Preview</h2>
         <p>{text}</p>
         </div>
